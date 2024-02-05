@@ -1,7 +1,17 @@
-import Image from "next/image";
+import TeacherForm from "../components/TeacherForm";
+import StudentForm from "../components/StudentForm";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
+    <div className="flex flex-col h-screen items-center justify-between p-2 mt-4">
+      <h1 className="text-xl font-bold my-2 mx-4 text-green-700 items-center">
+        Teacher and Student Management:
+      </h1>
+      <div className="flex flex-row gap-2">
+        <TeacherForm />
+        <StudentForm />
+        {/* Display the list of teachers and students here */}
+      </div>
+    </div>
   );
 }
