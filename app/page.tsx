@@ -3,7 +3,7 @@ import StudentForm from "../components/StudentForm";
 
 export default function Home() {
   return (
-    <div className="flex flex-col h-screen items-center justify-between p-2 mt-4">
+    <div className="flex flex-col h-screen items-center p-2 mt-5">
       <h1 className="text-xl font-bold my-2 mx-4 text-green-700 items-center">
         Teacher and Student Management:
       </h1>

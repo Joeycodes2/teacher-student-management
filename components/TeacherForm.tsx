@@ -1,9 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
-import axios from "axios";
 
-const TeacherForm: React.FC = () => {
+function TeacherForm() {
   const [title, setTitle] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -13,22 +13,21 @@ const TeacherForm: React.FC = () => {
   const [salary, setSalary] = useState("");
   const [error, setError] = useState("");
 
-  const handleFormSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Validate Date of Birth
     const dobDate = new Date(dob);
     const age = new Date().getFullYear() - dobDate.getFullYear();
 
-    if (age < 21) {
-      setError("Age must be at least 21 and above.");
-      return;
-    }
-
     // Make API request to store teacher details
     try {
-      await axios
-        .post("/api/teachers", {
+      const res = await fetch("pages/api/teachers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
           title,
           name,
           surname,
@@ -36,12 +35,21 @@ const TeacherForm: React.FC = () => {
           NIN,
           phoneNumber,
           salary,
-        })
-        .then((response) => {
-          console.log(response);
-        });
+        }),
+      });
+      if (age < 21) {
+        setError("Age must be at least 21 and above.");
+        return;
+      }
+      if (res.ok && e.target instanceof HTMLFormElement) {
+        const formData = e.target;
+        formData.reset();
+        setError("");
+      } else {
+        console.log("Registration failed.");
+      }
     } catch (error) {
-      console.error("Error adding teacher:", error);
+      console.log("Error during registraton: ", error);
     }
   };
 
@@ -52,14 +60,13 @@ const TeacherForm: React.FC = () => {
           Teacher Registration
         </h1>
 
-        <form onSubmit={handleFormSubmit} className="flex flex-col gap-3">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Title:  Mr, Mrs, Miss, Dr, Prof"
             required
-            className="bg-inherit"
           />
           <input
             type="text"
@@ -67,7 +74,6 @@ const TeacherForm: React.FC = () => {
             onChange={(e) => setName(e.target.value)}
             placeholder="Name"
             required
-            className="bg-inherit"
           />
           <input
             type="text"
@@ -75,15 +81,13 @@ const TeacherForm: React.FC = () => {
             onChange={(e) => setSurname(e.target.value)}
             placeholder="Surname"
             required
-            className="bg-inherit"
           />
           <input
-            type="text"
+            type="date"
             value={dob}
             onChange={(e) => setDob(e.target.value)}
-            placeholder="Date of birth"
+            placeholder="Date of Birth"
             required
-            className="bg-inherit"
           />
           <input
             type="text"
@@ -91,7 +95,6 @@ const TeacherForm: React.FC = () => {
             onChange={(e) => setNIN(e.target.value)}
             placeholder="National ID number"
             required
-            className="bg-inherit"
           />
           <input
             type="text"
@@ -99,34 +102,41 @@ const TeacherForm: React.FC = () => {
             onChange={(e) => setPhoneNumber(e.target.value)}
             placeholder="Phone number"
             required
-            className="bg-inherit"
           />
           <input
             type="text"
             value={salary}
             onChange={(e) => setSalary(e.target.value)}
             placeholder="Salary: optional"
-            className="bg-inherit"
           />
           <button
-            type="submit"
             className="bg-green-600 text-white font-bold px-6 py-2 my-1 cursor-pointer 
              hover:bg-zinc-500 tracking-wider hover:text-green-500"
           >
             Add Teacher
           </button>
+
+          {error && (
+            <div className="bg-red-700 text-sm text-white py-1 px-3 w-fit rounded-md tracking-wide">
+              {error}
+            </div>
+          )}
+
+          <Link
+            href="/"
+            className="group transition-color text-green-400 hover:text-zinc-500"
+          >
+            <h2 className={`text-sm font-semibold underline`}>
+              Back to home{" "}
+              <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
+                -&gt;
+              </span>
+            </h2>
+          </Link>
         </form>
-        <a href="/" className="group transition-color hover:text-zinc-700">
-          <h2 className={`text-sm font-semibold`}>
-            Back to home{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-        </a>
       </div>
     </div>
   );
-};
+}
 
 export default TeacherForm;

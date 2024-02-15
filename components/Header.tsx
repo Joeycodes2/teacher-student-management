@@ -22,7 +22,7 @@ function Header() {
             height={50}
             width={60}
             alt="Logo"
-            className="rounded-lg mr-1 md:mx-auto "
+            className="rounded-lg mr-1 xs:h-5 xs:w-5 md:mx-auto"
           />
         </Link>
         <a
