@@ -41,9 +41,14 @@ function TeacherForm() {
         setError("Age must be at least 21 and above.");
         return;
       }
-      if (res.ok && e.target instanceof HTMLFormElement) {
-        const formData = e.target;
-        formData.reset();
+      if (res.ok) {
+        setTitle("");
+        setName("");
+        setSurname("");
+        setDob("");
+        setNIN("");
+        setPhoneNumber("");
+        setSalary("");
         setError("");
       } else {
         console.log("Registration failed.");

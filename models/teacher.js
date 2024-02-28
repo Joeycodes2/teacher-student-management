@@ -3,31 +3,31 @@ import mongoose, { Schema, models } from "mongoose";
 const teacherSchema = new Schema(
   {
     title: {
-      type: string,
+      type: String,
       required: true,
     },
     name: {
-      type: string,
+      type: String,
       required: true,
     },
     surname: {
-      type: string,
+      type: String,
       required: true,
     },
     dob: {
-      type: string,
+      type: String,
       required: true,
     },
     NIN: {
-      type: string,
+      type: String,
       required: true,
     },
     phoneNumber: {
-      type: string,
+      type: String,
       required: true,
     },
     salary: {
-      type: string,
+      type: String,
     },
   },
   { timestamps: true }

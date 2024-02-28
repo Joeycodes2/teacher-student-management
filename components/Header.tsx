@@ -9,7 +9,11 @@ import { useState } from "react";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [opened, setOpened] = useState(false);
+
+  const handleSelection = () => {
+    setIsOpen(false);
+  };
+
   return (
     <header
       className="flex items-center px-4 py-2 fixed justify-between top-0 w-full 
@@ -53,7 +57,7 @@ function Header() {
             {isOpen && (
               <div
                 className="absolute bg-slate-100  top-12 flex flex-col items-start rounded-lg 
-              p-2 w-full"
+               p-2 w-full"
               >
                 {register.map((item, i) => (
                   <div
@@ -62,12 +66,12 @@ function Header() {
                     border-l-transparent hover:border-l-slate-400 border-l-4 bg-white"
                     key={i}
                   >
-                    <Link href={"/teacherRegister"}>
+                    <Link href={"/teacherRegister"} onClick={handleSelection}>
                       <span className="font-semibold hover:underline">
                         {item.teacherRegister}
                       </span>
                     </Link>
-                    <Link href={"/studentRegister"}>
+                    <Link href={"/studentRegister"} onClick={handleSelection}>
                       <span className="font-semibold hover:underline">
                         {item.studentRegister}
                       </span>

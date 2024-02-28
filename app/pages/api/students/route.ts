@@ -1,17 +1,6 @@
+import { connectMongoDB } from "@/lib/mongodb";
+import Student from "@/models/student";
 import { NextRequest, NextResponse } from "next/server";
-// import mongoose from "mongoose";
-// import dbConnect from "@/db";
-
-// const studentSchema = new mongoose.Schema({
-//   name: String,
-//   surname: String,
-//   dob: Date,
-//   NIN: Number,
-//   phoneNumber: Number,
-// });
-
-// const Student =
-//   mongoose.models.Student || mongoose.model("Student", studentSchema);
 
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
@@ -31,6 +20,15 @@ export async function POST(req: NextRequest, res: NextResponse) {
       console.log({ message: "Age may not be more than 22." });
       return;
     }
+
+    await connectMongoDB();
+    await Student.create({
+      name,
+      surname,
+      dob,
+      NIN,
+      phoneNumber,
+    });
 
     return NextResponse.json({ message: "User registered" }, { status: 201 });
   } catch (error) {

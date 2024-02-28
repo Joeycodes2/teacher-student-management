@@ -18,7 +18,7 @@ function StudentForm() {
     const dobDate = new Date(dob);
     const age = new Date().getFullYear() - dobDate.getFullYear();
 
-    // Make API request to store teacher details
+    // Make API request to store student details
     try {
       const res = await fetch("pages/api/students", {
         method: "POST",
@@ -37,9 +37,12 @@ function StudentForm() {
         setError("Age may not be more than 22.");
         return;
       }
-      if (res.ok && e.target instanceof HTMLFormElement) {
-        const formData = e.target;
-        formData.reset();
+      if (res.ok) {
+        setName("");
+        setSurname("");
+        setDob("");
+        setNIN("");
+        setPhoneNumber("");
         setError("");
       } else {
         console.log("Registration failed.");
