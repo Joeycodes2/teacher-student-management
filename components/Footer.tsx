@@ -9,13 +9,13 @@ function Footer() {
   return (
     <footer
       className="flex flex-row text-white items-center  py-0 justify-between top-0 w-full 
-      bg-[#2B2B2B]"
+      bg-[#2B2B2B] cursor-pointer"
     >
-      <div className="flex items-center px-4 mx-auto">
+      <Link href="/" className="flex items-center px-4 mx-auto">
         <p className="text-xs text-slate-600 items-center mx-auto mt-2 mb-2 hover:text-slate-700">
-          © {year} Joeycodes
+          © {year} Joeycodes Development
         </p>
-      </div>
+      </Link>
     </footer>
   );
 }

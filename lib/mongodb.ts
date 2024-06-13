@@ -1,15 +1,12 @@
+import React from "react";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 
-dotenv.config();
-
-// const MONGODB_URI = process.env.MONGODB_URI as string;
-const MONGODB_URI =
-  "mongodb+srv://joeycodes:gtVW4NPTNOPnCkCQ@cluster1.szkp3ml.mongodb.net/teacherstudentapp";
+const mongoUri = process.env.MONGODB_URI;
+const connectionString = mongoUri as string;
 
 export const connectMongoDB = async () => {
   try {
-    await mongoose.connect(MONGODB_URI);
+    await mongoose.connect(connectionString);
 
     console.log("Connected to mongoDB");
   } catch (error) {

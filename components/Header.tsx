@@ -17,7 +17,7 @@ function Header() {
   return (
     <header
       className="flex items-center px-4 py-2 fixed justify-between top-0 w-full 
-    bg-white z-50 shadow"
+    bg-gray-200"
     >
       <div className="flex md:flex-row md:mx-auto md:px-8 w-full">
         <Link href="/" className="">
@@ -33,15 +33,15 @@ function Header() {
           href="/"
           className="rounded-lg px-1 py-4 mx-1 transition-colors hover:text-orange-400"
         >
-          <h2 className={`mb-3 text-2xl text-green-600 font-semibold`}>
+          <h2 className={`mb-3 text-lg text-green-900 font-bold`}>
             TEACHER - STUDENT PORTAL{" "}
           </h2>
         </a>
 
         <div className="relative flex flex-row mx-auto mr-8">
-          <div className="relative flex items-center mx-1">
+          <div className="relative flex items-center mx-1 bgs-fuchsia-500 rounded-full">
             <button
-              className="flex font-semibold hover:text-green-600 focus:outline-none"
+              className="flex font-semibold hover:text-green-900 focus:outline-none"
               onClick={() => setIsOpen((prev) => !prev)}
             >
               <span className="mx-1 items-center">
@@ -82,10 +82,10 @@ function Header() {
             )}
           </div>
 
-          <div className="flex items-center ml-3">
+          <div className="flex items-center ml-3 pr-2 bg-zinc-300 rounded-3xl">
             <Link
               href="/"
-              className="flex font-semibold hover:text-green-600 focus:outline-none"
+              className="flex font-semibold hover:text-green-900 focus:outline-none"
             >
               <span className="mx-1 items-center">
                 <Icon icon="ant-design:home-filled" className="h-6 w-6" />

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 function TeacherForm() {
   const [title, setTitle] = useState("");
@@ -13,6 +14,8 @@ function TeacherForm() {
   const [salary, setSalary] = useState("");
   const [error, setError] = useState("");
 
+  const router = useRouter();
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -22,36 +25,55 @@ function TeacherForm() {
 
     // Make API request to store teacher details
     try {
-      const res = await fetch("pages/api/teachers", {
+      const resExists = await fetch("pages/api/teacherExists", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          title,
-          name,
-          surname,
-          dob,
-          NIN,
-          phoneNumber,
-          salary,
-        }),
+        body: JSON.stringify({ NIN }),
       });
+      const { teacher } = await resExists.json();
+
+      console.log("This is the Teacher NIN: ", teacher);
+
       if (age < 21) {
         setError("Age must be at least 21 and above.");
         return;
       }
-      if (res.ok) {
-        setTitle("");
-        setName("");
-        setSurname("");
-        setDob("");
-        setNIN("");
-        setPhoneNumber("");
-        setSalary("");
-        setError("");
+
+      if (teacher) {
+        setError("Teacher already exists!");
+        return;
       } else {
-        console.log("Registration failed.");
+        const res = await fetch("pages/api/teachers", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            title,
+            name,
+            surname,
+            dob,
+            NIN,
+            phoneNumber,
+            salary,
+          }),
+        });
+
+        if (res.ok) {
+          setTitle("");
+          setName("");
+          setSurname("");
+          setDob("");
+          setNIN("");
+          setPhoneNumber("");
+          setSalary("");
+          setError("");
+          router.push("/");
+        } else {
+          console.log("Registration failed.");
+        }
       }
     } catch (error) {
       console.log("Error during registraton: ", error);
@@ -59,8 +81,8 @@ function TeacherForm() {
   };
 
   return (
-    <div className="grid place-items-center h-screen mt-5">
-      <div className="shadow-lg p-5 rounded-lg border-t-4 border-green-400 w-[500px]">
+    <div className="grid place-items-center h-screen mt-14">
+      <div className="shadow-lg p-5 rounded-lg border-t-4 border-fuchsia-500 w-[500px]">
         <h1 className="text-xl font-bold my-4 text-zinc-600">
           Teacher Registration
         </h1>
@@ -115,8 +137,8 @@ function TeacherForm() {
             placeholder="Salary: optional"
           />
           <button
-            className="bg-green-600 text-white font-bold px-6 py-2 my-1 cursor-pointer 
-             hover:bg-zinc-500 tracking-wider hover:text-green-500"
+            className="bg-violet-500 text-white font-bold px-6 py-2 my-1 cursor-pointer 
+             hover:bg-fuchsia-500 tracking-wider hover:text-green-900"
           >
             Add Teacher
           </button>

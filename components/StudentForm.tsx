@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 function StudentForm() {
   const [name, setName] = useState("");
@@ -10,6 +11,8 @@ function StudentForm() {
   const [NIN, setNIN] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
+
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -20,6 +23,27 @@ function StudentForm() {
 
     // Make API request to store student details
     try {
+      const resStudentExists = await fetch("pages/api/studentExists", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, surname, dob, NIN, phoneNumber }),
+      });
+
+      const { student } = await resStudentExists.json();
+      console.log("This is the student NIN: ", student);
+
+      if (age > 22) {
+        setError("Age may not be more than 22.");
+        return;
+      }
+
+      if (student) {
+        setError("Student account already exists");
+        return;
+      }
+
       const res = await fetch("pages/api/students", {
         method: "POST",
         headers: {
@@ -33,10 +57,7 @@ function StudentForm() {
           phoneNumber,
         }),
       });
-      if (age > 22) {
-        setError("Age may not be more than 22.");
-        return;
-      }
+
       if (res.ok) {
         setName("");
         setSurname("");
@@ -44,6 +65,7 @@ function StudentForm() {
         setNIN("");
         setPhoneNumber("");
         setError("");
+        router.push("/");
       } else {
         console.log("Registration failed.");
       }
@@ -54,7 +76,7 @@ function StudentForm() {
 
   return (
     <div className="grid place-items-center h-screen mt-5">
-      <div className="shadow-lg p-5 rounded-lg border-t-4 border-green-400 w-[500px]">
+      <div className="shadow-lg p-5 rounded-lg border-t-4 border-fuchsia-500 w-[500px]">
         <h1 className="text-xl font-bold my-4 text-zinc-600">
           Student Registration
         </h1>
@@ -96,8 +118,8 @@ function StudentForm() {
             required
           />
           <button
-            className="bg-green-600 text-white font-bold px-6 py-2 my-1 cursor-pointer 
-             hover:bg-zinc-500 tracking-wider hover:text-green-500"
+            className="bg-violet-500 text-white font-bold px-6 py-2 my-1 cursor-pointer 
+             hover:bg-fuchsia-500 tracking-wider hover:text-green-900"
           >
             Add Teacher
           </button>
