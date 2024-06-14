@@ -23,7 +23,7 @@ interface Student {
   phoneNumber: string;
 }
 
-function Home(req: Request, res: Response) {
+export default function Home() {
   const [teachers, setTeachers] = useState<Teacher[]>([]);
   const [students, setStudents] = useState<Student[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -115,5 +115,3 @@ function Home(req: Request, res: Response) {
     </div>
   );
 }
-
-export default Home;
