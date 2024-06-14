@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-// import Teacher from "@/models/teacher";
 
 interface Teacher {
   _id: string;
@@ -23,7 +22,7 @@ interface Student {
   phoneNumber: string;
 }
 
-export default function Home(req: Request, res: Response) {
+export default function Home(res: Response) {
   const [teachers, setTeachers] = useState<Teacher[]>([]);
   const [students, setStudents] = useState<Student[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -31,14 +30,14 @@ export default function Home(req: Request, res: Response) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/pages/api/registeredTeachers", {
+        const teacherRes = await fetch("/pages/api/registeredTeachers", {
           method: "GET",
         });
         const studentRes = await fetch("/pages/api/registeredStudents", {
           method: "GET",
         });
 
-        const teacher = await res.json();
+        const teacher = await teacherRes.json();
         const student = await studentRes.json();
         console.log("THIS IS THE RES: ", teacher, student);
 
