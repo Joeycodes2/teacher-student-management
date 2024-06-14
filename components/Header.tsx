@@ -19,14 +19,14 @@ function Header() {
       className="flex items-center px-4 py-2 fixed justify-between top-0 w-full 
     bg-gray-200"
     >
-      <div className="flex md:flex-row md:mx-auto md:px-8 w-full">
+      <div className="flex md:flex-row md:mx-auto md:px-8 w-full justify-between">
         <Link href="/" className="">
           <Image
             src={Logo}
             height={50}
             width={60}
             alt="Logo"
-            className="rounded-lg mr-1 xs:h-5 xs:w-5 md:mx-auto"
+            className="flex-row rounded-lg mx-1 xs:h-10 xs:w-10"
           />
         </Link>
         <a

@@ -63,7 +63,7 @@ export default function Home() {
     justify-between bg-gradient-to-r from-violet-400 to-fuchsia-400"
     >
       <div className="mx-auto pt-6 mt-2 items-center">
-        <h1 className="text-2xl font-bold">THE TEACHER-STUDENT PORTAL</h1>
+        <h1 className="text-2xl font-bold">A TEACHER-STUDENT DATABOARD</h1>
       </div>
       <p className="mx-8 font-semibold items-center">
         Welcome to the board official portal for Teachers and students database
