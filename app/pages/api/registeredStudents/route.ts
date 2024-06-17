@@ -7,7 +7,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     try {
       await connectMongoDB();
       const student = await Student.find();
-      console.log("A spread of Students: ", student);
+      // console.log("A spread of Students: ", student);
 
       return NextResponse.json(student);
     } catch (error) {

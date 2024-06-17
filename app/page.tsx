@@ -36,7 +36,7 @@ export default function Home() {
 
         const teacher = await teacherRes.json();
         const student = await studentRes.json();
-        console.log("THIS IS THE RES: ", teacher, student);
+        // console.log("THIS IS THE RES: ", teacher, student);
 
         setTeachers(teacher);
         setStudents(student);
@@ -53,7 +53,7 @@ export default function Home() {
   if (isLoading)
     return (
       <p className="text-2xl text-green-700 font-bold rounded-2xl bg-slate-500 items-center">
-        Loading Teachers...
+        Loading Users...
       </p>
     );
 
