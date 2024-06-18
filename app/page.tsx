@@ -1,7 +1,8 @@
 "use client";
 
-import react from "react";
 import { useState, useEffect } from "react";
+import Student from "@/models/student";
+import Teacher from "@/models/teacher";
 
 interface Teacher {
   _id: string;
@@ -84,8 +85,8 @@ export default function Home() {
           </div>
           <ul className="mb-2 font-bold cursor-pointer">
             {teachers?.map((teacher) => (
-              <li key={teacher?._id}>
-                <div className="flex text-lg m-2 text-white gap-1">
+              <li key={teacher._id}>
+                <div className="flex text-lg m-2 text-gray-700 gap-1 bg-violet-300">
                   <p>{teacher.title}</p>
                   <p>{teacher.name}</p>
                   <p>{teacher.surname}</p>
@@ -102,8 +103,8 @@ export default function Home() {
           </div>
           <ul className="mb-2 cursor-pointer">
             {students?.map((student) => (
-              <li key={student?._id}>
-                <div className="flex text-lg m-2 text-white gap-1">
+              <li key={student._id}>
+                <div className="flex text-lg m-2 text-gray-700 gap-1 bg-violet-300">
                   <p className="font-bold">{student.name}</p>
                   <p className="font-bold">{student.surname}</p>
                   <p>{student.dob}</p>
