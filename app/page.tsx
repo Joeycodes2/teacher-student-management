@@ -84,7 +84,7 @@ export default function Home() {
           </div>
           <ul className="mb-2 font-bold cursor-pointer">
             {teachers?.map((teacher) => (
-              <li key={teacher._id}>
+              <li key={teacher?._id}>
                 <div className="flex text-lg m-2 text-white gap-1">
                   <p>{teacher.title}</p>
                   <p>{teacher.name}</p>
@@ -102,7 +102,7 @@ export default function Home() {
           </div>
           <ul className="mb-2 cursor-pointer">
             {students?.map((student) => (
-              <li key={student._id}>
+              <li key={student?._id}>
                 <div className="flex text-lg m-2 text-white gap-1">
                   <p className="font-bold">{student.name}</p>
                   <p className="font-bold">{student.surname}</p>
