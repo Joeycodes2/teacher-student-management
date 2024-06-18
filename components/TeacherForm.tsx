@@ -151,7 +151,7 @@ function TeacherForm() {
 
           <Link
             href="/"
-            className="group transition-color text-green-400 hover:text-zinc-500"
+            className="group transition-color text-fuchsia-500 hover:text-zinc-500"
           >
             <h2 className={`text-sm font-semibold underline`}>
               Back to home{" "}
