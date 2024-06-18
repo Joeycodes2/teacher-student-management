@@ -26,7 +26,7 @@ interface Student {
 export default function Home() {
   const [teachers, setTeachers] = useState<Teacher[]>([]);
   const [students, setStudents] = useState<Student[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,20 +42,21 @@ export default function Home() {
         setStudents(student);
       } catch (error) {
         console.log("Error fetching data:", error);
-      } finally {
-        setIsLoading(false); // Set loading state to false after fetching (regardless of success or error)
       }
+      // } finally {
+      //   setIsLoading(false); // Set loading state to false after fetching (regardless of success or error)
+      // }
     };
 
     fetchData();
   }, []);
 
-  if (isLoading)
-    return (
-      <p className="text-2xl text-green-700 font-bold rounded-2xl bg-slate-500 items-center">
-        Loading Users...
-      </p>
-    );
+  // if (isLoading)
+  //   return (
+  //     <p className="text-2xl text-green-700 font-bold rounded-2xl bg-slate-500 items-center">
+  //       Loading Users...
+  //     </p>
+  //   );
 
   return (
     <div
@@ -82,7 +83,7 @@ export default function Home() {
             </h1>
           </div>
           <ul className="mb-2 font-bold cursor-pointer">
-            {teachers.map((teacher) => (
+            {teachers?.map((teacher) => (
               <li key={teacher._id}>
                 <div className="flex text-lg m-2 text-white gap-1">
                   <p>{teacher.title}</p>
@@ -100,7 +101,7 @@ export default function Home() {
             </h1>
           </div>
           <ul className="mb-2 cursor-pointer">
-            {students.map((student) => (
+            {students?.map((student) => (
               <li key={student._id}>
                 <div className="flex text-lg m-2 text-white gap-1">
                   <p className="font-bold">{student.name}</p>
