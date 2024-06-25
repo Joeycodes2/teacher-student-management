@@ -27,7 +27,6 @@ interface Student {
 export default function Home() {
   const [teachers, setTeachers] = useState<Teacher[]>([]);
   const [students, setStudents] = useState<Student[]>([]);
-  // const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,39 +43,31 @@ export default function Home() {
       } catch (error) {
         console.log("Error fetching data:", error);
       }
-      // } finally {
-      //   setIsLoading(false); // Set loading state to false after fetching (regardless of success or error)
-      // }
     };
 
     fetchData();
   }, []);
 
-  // if (isLoading)
-  //   return (
-  //     <p className="text-2xl text-green-700 font-bold rounded-2xl bg-slate-500 items-center">
-  //       Loading Users...
-  //     </p>
-  //   );
-
   return (
     <div
-      className="container h-screen mx-auto mt-20 pt-16 max-w-full flex flex-wrap 
-    justify-between bg-gradient-to-r from-violet-400 to-fuchsia-400"
+      className="flex-col max-h-full w-screen md:h-screen lg:h-screen xl:h-screen pt-20
+      bg-gradient-to-r from-violet-400 to-fuchsia-400 items-center"
     >
-      <div className="mx-auto pt-6 mt-2 items-center">
-        <h1 className="text-2xl font-bold">A TEACHER-STUDENT DATABOARD</h1>
+      <div className="text-center py-6 px-2 mt-2 items-center">
+        <h1 className="text-center text-2xl font-bold items-center">
+          A TEACHER-STUDENT DATABOARD
+        </h1>
       </div>
-      <p className="mx-8 font-semibold items-center">
+      <p className="text-center text-sm p-4 font-semibold items-center">
         Welcome to the board official portal for Teachers and students database
         registration and identification. The onboarding process includes
         registering as a new user and this requires completing the registration
         form with your correct credentials. Upon submission your credentials
-        will automatically be uploaded to the database and Name added to the
+        will automatically be uploaded to the database and data added to the
         portal ledger
       </p>
 
-      <div className="flex flex-row w-full py-6 px-12 bg-gradient-to-r from-violet-400 to-fuchsia-400 justify-between">
+      <div className="flex flex-row w-screen py-6 px-12 bg-gradient-to-r from-violet-400 to-fuchsia-400 justify-between">
         <div className="card max-w-xl md:w-1/2 mx-2 rounded-lg shadow-md p-2 bg-fuchsia-500">
           <div className="card-title bg-gray-200 px-4 py-2 rounded-t-lg">
             <h1 className="text-2xl font-bold items-center">
@@ -86,7 +77,7 @@ export default function Home() {
           <ul className="mb-2 font-bold cursor-pointer">
             {teachers?.map((teacher) => (
               <li key={teacher._id}>
-                <div className="flex text-lg m-2 text-gray-700 gap-1 bg-violet-300">
+                <div className="flex text-sm m-2 p-1 text-white gap-1 bg-violet-700 rounded-lg">
                   <p>{teacher.title}</p>
                   <p>{teacher.name}</p>
                   <p>{teacher.surname}</p>
@@ -104,7 +95,7 @@ export default function Home() {
           <ul className="mb-2 cursor-pointer">
             {students?.map((student) => (
               <li key={student._id}>
-                <div className="flex text-lg m-2 text-gray-700 gap-1 bg-violet-300">
+                <div className="flex text-sm m-2 p-1 text-white gap-1 bg-violet-700 rounded-lg">
                   <p className="font-bold">{student.name}</p>
                   <p className="font-bold">{student.surname}</p>
                   <p>{student.dob}</p>

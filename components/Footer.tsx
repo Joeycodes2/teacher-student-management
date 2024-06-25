@@ -8,11 +8,11 @@ function Footer() {
 
   return (
     <footer
-      className="flex flex-row text-white items-center  py-0 justify-between top-0 w-full 
-      bg-[#2B2B2B] cursor-pointer"
+      className="flex flex-row w-screen items-center  py-0 justify-between top-0
+      mb-0 bg-[#2B2B2B] hover:bg-gray-900 cursor-pointer"
     >
       <Link href="/" className="flex items-center px-4 mx-auto">
-        <p className="text-xs text-slate-600 items-center mx-auto mt-2 mb-2 hover:text-slate-700">
+        <p className="text-center text-xs text-slate-600 items-center mx-auto my-2 hover:text-slate-700">
           © {year} Joeycodes Development
         </p>
       </Link>
