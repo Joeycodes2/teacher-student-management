@@ -8,8 +8,8 @@ function Footer() {
 
   return (
     <footer
-      className="flex flex-row w-screen items-center  py-0 justify-between top-0
-      mb-0 bg-[#2B2B2B] hover:bg-gray-900 cursor-pointer"
+      className="flex-row w-screen items-center py-0 justify-between mt-auto
+      mb-0 bg-[#2B2B2B] hover:bg-gray-900 cursor-pointer relative"
     >
       <Link href="/" className="flex items-center px-4 mx-auto">
         <p className="text-center text-xs text-slate-600 items-center mx-auto my-2 hover:text-slate-700">

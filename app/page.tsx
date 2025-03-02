@@ -50,7 +50,7 @@ export default function Home() {
 
   return (
     <div
-      className="flex-col max-h-full w-screen md:h-screen lg:h-screen xl:h-screen pt-20
+      className="flex flex-col max-h-full w-screen md:max-h-full lg:max-h-full xl:max-h-full pt-20 2xl:max-h-full
       bg-gradient-to-r from-violet-400 to-fuchsia-400 items-center"
     >
       <div className="text-center py-6 px-2 mt-2 items-center">
@@ -67,9 +67,15 @@ export default function Home() {
         portal ledger
       </p>
 
-      <div className="flex flex-row w-screen py-6 px-12 bg-gradient-to-r from-violet-400 to-fuchsia-400 justify-between">
-        <div className="card max-w-xl md:w-1/2 mx-2 rounded-lg shadow-md p-2 bg-fuchsia-500">
-          <div className="card-title bg-gray-200 px-4 py-2 rounded-t-lg">
+      <div
+        className="flex flex-col w-screen py-6 px-12 bg-gradient-to-r from-violet-400
+       to-fuchsia-400 items-center md:items-center lg:items-center xl:items-center"
+      >
+        <div
+          className="card my-2 max-w-md md:max-w-md lg:max-w-lg xl:max-w-xl md:w-1/2 mx-2 
+        rounded-lg shadow-md p-2 bg-gray-300 "
+        >
+          <div className="card-title bg-gray-200 px-4 py-2 rounded-t-lg items-center">
             <h1 className="text-2xl font-bold items-center">
               Registered Teachers
             </h1>
@@ -86,8 +92,11 @@ export default function Home() {
             ))}
           </ul>
         </div>
-        <div className="card max-w-xl md:w-1/2 sm:mx-2 rounded-lg shadow-md p-2 bg-fuchsia-600">
-          <div className="card-title bg-gray-200 px-4 py-2 rounded-t-lg">
+        <div
+          className="card max-w-md md:max-w-md lg:max-w-lg xl:max-w-xl md:w-1/2 
+        mx-2 rounded-lg shadow-md p-2 bg-gray-300"
+        >
+          <div className="card-title bg-gray-200 px-4 py-2 rounded-t-lg items-center">
             <h1 className="text-2xl font-bold items-center">
               Registered Students
             </h1>
