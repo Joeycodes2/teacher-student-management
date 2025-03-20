@@ -81,8 +81,8 @@ function TeacherForm() {
   };
 
   return (
-    <div className="grid place-items-center h-screen mt-14">
-      <div className="shadow-lg p-5 rounded-lg border-t-4 border-fuchsia-500 w-[500px]">
+    <div className="grid place-items-center h-screen w-screen mt-10">
+      <div className="shadow-lg p-5 rounded-lg border-t-4 border-violet-400 w-[400px] md:max-w-md lg:w-[900px] xl:w-[900px]">
         <h1 className="text-xl font-bold my-4 text-zinc-600">
           Teacher Registration
         </h1>
@@ -110,6 +110,7 @@ function TeacherForm() {
             required
           />
           <input
+            className="text-zinc-400 hover:text-green-900"
             type="date"
             value={dob}
             onChange={(e) => setDob(e.target.value)}
@@ -137,8 +138,8 @@ function TeacherForm() {
             placeholder="Salary: optional"
           />
           <button
-            className="bg-violet-500 text-white font-bold px-6 py-2 my-1 cursor-pointer 
-             hover:bg-fuchsia-500 tracking-wider hover:text-green-900"
+            className="bg-zinc-400 text-white font-bold px-6 py-2 my-1 cursor-pointer 
+             hover:bg-violet-400 tracking-wider hover:text-zinc-900"
           >
             Add Teacher
           </button>
@@ -156,7 +157,7 @@ function TeacherForm() {
             <h2 className={`text-sm font-semibold underline`}>
               Back to home{" "}
               <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                -&gt;
+                =&gt;
               </span>
             </h2>
           </Link>

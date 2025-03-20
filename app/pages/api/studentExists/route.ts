@@ -7,10 +7,10 @@ export async function POST(req: NextRequest, res: NextResponse) {
     await connectMongoDB();
     const { NIN } = await req.json();
 
-    console.log("This is NIN ", NIN);
+    // console.log("This is NIN ", NIN);
 
     const student = await Student.findOne({ NIN }).select("_id");
-    console.log("This is studentID: ", student);
+    // console.log("This is studentID: ", student);
 
     return NextResponse.json({ student });
   } catch (error) {
