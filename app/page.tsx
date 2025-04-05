@@ -55,16 +55,16 @@ export default function Home() {
     >
       <div className="text-center py-6 px-2 mt-2 items-center">
         <h1 className="text-center text-2xl font-bold items-center">
-          A TEACHER-STUDENT DATABOARD
+          TEACHER-STUDENT DATABOARD
         </h1>
       </div>
       <p className="text-center text-sm p-4 font-semibold items-center">
-        Welcome to the board official portal for Teachers and students database
-        registration and identification. The onboarding process includes
-        registering as a new user and this requires completing the registration
-        form with your correct credentials. Upon submission your credentials
-        will automatically be uploaded to the database and data added to the
-        portal ledger
+        Welcome to the official registration portal for teachers and students
+        identification and clearance. The onboarding process entails registering
+        as a new user and completing the registration form with correct
+        credentials. A successful submission of your registration form will
+        automatically upload to the database and your particulars added to the
+        homepage dashboard in real time.
       </p>
 
       <div

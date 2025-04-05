@@ -83,7 +83,7 @@ function StudentForm() {
 
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-3 text-zinc-300"
+          className="flex flex-col gap-3 text-zinc-500"
         >
           <input
             type="text"
@@ -100,8 +100,7 @@ function StudentForm() {
             required
           />
           <input
-            className="text-zinc-400 hover:text-green-900"
-            type="date"
+            type="text"
             value={dob}
             onChange={(e) => setDob(e.target.value)}
             placeholder="Date of Birth"

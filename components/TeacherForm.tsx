@@ -111,7 +111,7 @@ function TeacherForm() {
           />
           <input
             className="text-zinc-400 hover:text-green-900"
-            type="date"
+            type="text"
             value={dob}
             onChange={(e) => setDob(e.target.value)}
             placeholder="Date of Birth"
